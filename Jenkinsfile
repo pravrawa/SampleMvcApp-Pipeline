@@ -6,7 +6,7 @@ node
 	
 			bat 'git init &&  git config http.sslVerify false'
 			checkout([$class: 'GitSCM', branches: [[name: '*/master']],
-			userRemoteConfigs: [[url: 'https://github.com/pravrawa/SampleMvcApp-Pipeline.git]]])
+			userRemoteConfigs: [[url: 'https://github.com/pravrawa/SampleMvcApp-Pipeline.git']]])
     
     stage 'Build'
             String appsHome     = "C:/Jenkins/apps"
