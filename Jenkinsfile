@@ -1,4 +1,4 @@
-node('TAW005')
+node
 {
  try 
  { 
@@ -9,7 +9,7 @@ node('TAW005')
 			userRemoteConfigs: [[url: 'https://github.com/pravrawa/SampleMvcApp-Pipeline.git]]])
     
     stage 'Build'
-            String appsHome     = "C:/jenkins_home/apps"
+            String appsHome     = "C:/Jenkins/apps"
 			
  	      bat "\"${appsHome}/nuget/nuget.exe\" restore SampleWebApp.sln"	     
 		  bat "\"C:/Program Files (x86)/MSBuild/14.0/Bin/MSBuild.exe\" SampleWebApp.sln  /p:OutDir=target /p:Configuration=Debug /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
@@ -22,7 +22,7 @@ node('TAW005')
 		  
    stage 'Code Analysis'
 	
-	        String sonarMSBuild = "C:/jenkins_home/apps/sonar-scanner-msbuild"			
+	        String sonarMSBuild = "C:/Jenkins/apps/sonar-scanner-msbuild"			
 				
 			String sonarqube_host ="http://localhost:9000/"        
 			String projectKey     = "SampleWebApp"
