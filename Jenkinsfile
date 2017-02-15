@@ -6,7 +6,7 @@ node('TAW005')
 	
 			bat 'git init &&  git config http.sslVerify false'
 			checkout([$class: 'GitSCM', branches: [[name: '*/master']],
-			userRemoteConfigs: [[url: 'https://github.aig.net/Consumer/valic-pso.git']]])
+			userRemoteConfigs: [[url: 'https://github.com/pravrawa/SampleMvcApp-Pipeline.git]]])
     
     stage 'Build'
             String appsHome     = "C:/jenkins_home/apps"
