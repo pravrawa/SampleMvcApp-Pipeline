@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<udm.DeploymentPackage version="$BUILD_NUMBER.0" application="SampleMvcApp">
+  <application />
+  <orchestrator />
+  <deployables>
+    <iis.ApplicationPoolSpec name="SampleMvcApp-applicationPool">
+      <managedRuntimeVersion>v4.0</managedRuntimeVersion>
+    </iis.ApplicationPoolSpec>
+    <iis.WebContent name="SampleMvcApp-files" file="SampleWebApp/">
+      <tags />
+      <scanPlaceholders>false</scanPlaceholders>
+      <targetPath>C:\inetpub\samplewebapp</targetPath>
+    </iis.WebContent>
+    <iis.WebsiteSpec name="SampleMvcApp-website">
+      <websiteName>SampleMvcApp</websiteName>
+      <physicalPath>C:\inetpub\samplewebapp</physicalPath>
+      <applicationPoolName>SampleMvcApp-applicationPool</applicationPoolName>
+      <bindings>
+        <iis.WebsiteBindingSpec name="SampleMvcApp-website/8080">
+          <port>8081</port>
+        </iis.WebsiteBindingSpec>
+      </bindings>
+    </iis.WebsiteSpec>
+  </deployables>
+  <applicationDependencies />
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+</udm.DeploymentPackage>

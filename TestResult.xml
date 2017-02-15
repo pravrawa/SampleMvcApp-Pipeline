@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:/Jenkins/workspace/sample-project-2/Tests/target/Tests.dll" total="24" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2017-02-14" time="13:49:18">
+  <environment nunit-version="3.6.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Jenkins\workspace\sample-project-2" machine-name="DIN51003127" user="SYSTEM" user-domain="ODC" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:/Jenkins/workspace/sample-project-2/Tests/target/Tests.dll" executed="True" result="Success" success="True" time="0.450" asserts="68">
+    <properties>
+      <property name="_PID" value="15788" />
+      <property name="_APPDOMAIN" value="nunitlite-runner.exe" />
+    </properties>
+    <results>
+      <test-suite type="TestSuite" name="Tests" executed="True" result="Success" success="True" time="0.437" asserts="68">
+        <results>
+          <test-suite type="TestSuite" name="UnitTests" executed="True" result="Success" success="True" time="0.435" asserts="68">
+            <results>
+              <test-suite type="TestSuite" name="Group03ServiceLayer" executed="True" result="Success" success="True" time="0.218" asserts="32">
+                <results>
+                  <test-suite type="TestFixture" name="Test10DiSimple" executed="True" result="Success" success="True" time="0.209" asserts="32">
+                    <results>
+                      <test-case name="Test01AutoFacSimple" executed="True" result="Success" success="True" time="0.112" asserts="2" />
+                      <test-case name="Test02AutoFacTransient" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+                      <test-case name="Test03AutoFacSingle" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+                      <test-case name="Test04AutoFacLifeTimeScope" executed="True" result="Success" success="True" time="0.001" asserts="8" />
+                      <test-case name="Test05AutoFacConstructor" executed="True" result="Success" success="True" time="0.007" asserts="2" />
+                      <test-case name="Test15AutoFacDisposeCreate" executed="True" result="Success" success="True" time="0.002" asserts="2" />
+                      <test-case name="Test16AutoFacDisposeCalled" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                      <test-case name="Test20AutoFacRegisterGeneric" executed="True" result="Success" success="True" time="0.012" asserts="3" />
+                      <test-case name="Test21AutoFacRegisterGenericAfterRegisterAssembly" executed="True" result="Success" success="True" time="0.018" asserts="3" />
+                      <test-case name="Test30AutoFacRegisterClassWithPrivateCtorBad" executed="True" result="Success" success="True" time="0.017" asserts="2" />
+                      <test-case name="Test31AutoFacTryCtorWithPrivateCtorAsOptionOk" executed="True" result="Success" success="True" time="0.005" asserts="2" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Test11AutoFacModules" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                    <results />
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestSuite" name="Group06Mvc" executed="True" result="Success" success="True" time="0.430" asserts="36">
+                <results>
+                  <test-suite type="TestFixture" name="Test02Validation" executed="True" result="Success" success="True" time="0.212" asserts="36">
+                    <results>
+                      <test-case name="Check01TestModelValidate" executed="True" result="Success" success="True" time="0.002" asserts="5" />
+                      <test-case name="Check05TestModelStateValidateOnly" executed="True" result="Success" success="True" time="0.116" asserts="6" />
+                      <test-case name="Check06TestModelStateIntAttributeOnly" executed="True" result="Success" success="True" time="0.003" asserts="5" />
+                      <test-case name="Check06TestModelStateValidateOneOnly" executed="True" result="Success" success="True" time="0.001" asserts="5" />
+                      <test-case name="Check07TestModelStateStringAttributeOnly" executed="True" result="Success" success="True" time="0.005" asserts="4" />
+                      <test-case name="Check08TestModelStateMixedErrorsOnly" executed="True" result="Success" success="True" time="0.001" asserts="4" />
+                      <test-case name="Check15TestModelStateValidateOnly" executed="True" result="Success" success="True" time="0.040" asserts="1" />
+                      <test-case name="Check16TestModelStateIntAttributeOnly" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="Check16TestModelStateValidateOneOnly" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="Check17TestModelStateStringAttributeOnly" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="Check18TestModelStateMixedErrorsOnly" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="Check20StatusToJsonTopLevel" executed="True" result="Success" success="True" time="0.005" asserts="1" />
+                      <test-case name="Check21StatusToJsonProperty" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
