@@ -16,10 +16,20 @@ node
    
    stage 'Test'      
 	     	
-	      bat "\"C:/jenkins_home/apps/NUnit.Framework-3.6.0/bin/net-4.5/nunitlite-runner.exe\" --result:TestResult.xml;format=nunit2  Tests/target/Tests.dll"
+	      bat "\"C:/Jenkins/apps/NUnit.Framework-3.6.0/bin/net-4.5/nunitlite-runner.exe\" --result:TestResult.xml;format=nunit2  Tests/target/Tests.dll"
 	      step([$class: 'NUnitPublisher', testResultsPattern:'**/TestResult.xml', debug: false, keepJUnitReports: true, skipJUnitArchiver:false, failIfNoResults: true]) 
-
 		  
+   stage 'ReportGenerator'
+    //  bat "\"C:/Jenkins/apps/ReportGenerator_2.5.2.0/ReportGenerator.exe\" -reports:C:/Jenkins/workspace/sample-project-2/TestResult.xml --targetDir:TestResultsHTML"   
+    //  def currentDir2 = pwd()
+	//  bat "\"C:/Jenkins/apps/reportunit.1.5.0-alpha1/tools/ReportUnit.exe\" \"${currentDir2}/TestResult.xml\" "
+	
+	    bat "\"C:/Jenkins/apps/NUnit.HTML.Report.Generator.v1.0/NUnitHTMLReportGenerator.exe\" TestResult.xml TestReportHTML/index.htm "
+	
+    
+	stage 'Publish Results'
+		publishHTML (target:[allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'TestReportHTML', reportFiles: 'index.htm', reportName: 'Test Results HTML Report'])
+   
    stage 'Code Analysis'
 	
 	        String sonarMSBuild = "C:/Jenkins/apps/sonar-scanner-msbuild"			
@@ -35,7 +45,6 @@ node
 			bat "\"${sonarMSBuild}/SonarQube.Scanner.MSBuild.exe\" begin /s:${currentDir}/SonarQube.Analysis.xml  /k:\"SampleWebApp\" /n:\"SampleWebApp\" /v:\"1.0\" "
             bat "\"C:/Program Files (x86)/MSBuild/14.0/Bin/MSBuild.exe\" /t:Rebuild"
 			bat "\"${sonarMSBuild}/MSBuild.SonarQube.Runner.exe\" end"
-
    stage 'Archive'
    
 			def server = Artifactory.newServer url:'http://localhost:9090/artifactory', username:'admin', password:'password'
@@ -89,16 +98,17 @@ node
   }		
    catch (err) {
 
-        currentBuild.result = "FAILURE"
+    //    currentBuild.result = "FAILURE"
 
-            mail body: "It appears that ${env.BUILD_URL} is failing" ,
-            from: 'enterprise_jenkins_valicpso@ci.org',
-            replyTo: 'girdhar.katiyar@aig.com',
-            subject: '${env.JOB_NAME} (${env.BUILD_NUMBER}) failed',
-            to: 'Rishi.Singh1@aig.com',
-			cc: 'girdhar.katiyar@aig.com,praveen.rawat@aig.com'
+    //        mail body: "It appears that ${env.BUILD_URL} is failing" ,
+    //        from: 'enterprise_jenkins_valicpso@ci.org',
+    //        replyTo: 'girdhar.katiyar@aig.com',
+    //        subject: '${env.JOB_NAME} (${env.BUILD_NUMBER}) failed',
+    //        to: 'Rishi.Singh1@aig.com',
+	//		cc: 'girdhar.katiyar@aig.com,praveen.rawat@aig.com'
 
         throw err
     }
+    
+}    
  
- }
