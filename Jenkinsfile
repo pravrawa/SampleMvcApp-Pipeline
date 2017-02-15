@@ -24,7 +24,7 @@ node('TAW005')
 	
 	        String sonarMSBuild = "C:/jenkins_home/apps/sonar-scanner-msbuild"			
 				
-			String sonarqube_host ="http://algsasc2tm0092.r1-core.r1.aig.net:9000/"        
+			String sonarqube_host ="http://localhost:9000/"        
 			String projectKey     = "SampleWebApp"
 			def currentDir      = pwd()
 			
@@ -38,7 +38,7 @@ node('TAW005')
 
    stage 'Archive'
    
-			def server = Artifactory.newServer url:'http://algsasc2tm0076.r1-core.r1.aig.net:8081/artifactory', username:'rsingh', password:'AKCp2Vp51q8fNPWgx1Cg2vLGVXBNW4BpKczxnXoePAxCCBMAEaEa9npCcb5TjeYvSM6ttaQqi'
+			def server = Artifactory.newServer url:'http://localhost:9090/artifactory', username:'admin', password:'password'
 			server.setBypassProxy(true)	    			
 				
 		    def uploadSpec =
@@ -66,7 +66,26 @@ node('TAW005')
 		// Upload to Artifactory and publish.		
 			def buildInfo = server.upload spec: uploadSpec
 			server.publishBuildInfo buildInfo
-		
+
+ 	stage('Package') {  
+		def dirName = 'SampleWebApp-'+"$BUILD_NUMBER.0"
+		def zipFileName = 'SampleWebApp-'+"$BUILD_NUMBER.0" + '.zip';
+	    //unzip dir:  '''+"${dirName}+''', glob: '', zipFile: '''+"${zipFileName}"+''' 
+		//bat "cd download"
+		//bat "curl -O http://localhost:9090/artifactory/aig-generic-local/nuget/SampleWebApp-${sampleWebAppVersion}.zip"
+		xldCreatePackage artifactsPath: '/', manifestPath: 'deployit-manifest.xml', darPath: '$JOB_NAME-$BUILD_NUMBER.0.dar' 
+  	}  
+	
+	stage('Publish') {  
+	//	xldPublishPackage serverCredentials: 'Admin', darPath: '$JOB_NAME-$BUILD_NUMBER.0.dar'
+        xldPublishPackage darPath: '$JOB_NAME-$BUILD_NUMBER.0.dar', serverCredentials: 'XL-DeployServer'
+	}
+	
+	stage('Deploy') {  
+		//xldDeploy serverCredentials: 'Admin', environmentId: 'Environments/Dev', packageId: 'Applications/SampleMvcApp/$BUILD_NUMBER.0'
+          xldDeploy environmentId: 'Environments/Dev', packageId: 'Applications/SampleMvcApp/$BUILD_NUMBER.0', serverCredentials: 'XL-DeployServer'
+	}  	
+			
   }		
    catch (err) {
 
