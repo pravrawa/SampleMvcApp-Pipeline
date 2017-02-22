@@ -2,6 +2,8 @@ node
 {
  try 
  { 
+	def workspace = pwd()
+    echo $workspace
 	stage 'Checkout'
 	
 			bat 'git init &&  git config http.sslVerify false'
@@ -82,9 +84,10 @@ node
 	    //unzip dir:  '''+"${dirName}+''', glob: '', zipFile: '''+"${zipFileName}"+''' 
 		//bat "cd download"
 		//bat "curl -O http://localhost:9090/artifactory/aig-generic-local/nuget/SampleWebApp-${sampleWebAppVersion}.zip"
-		xldCreatePackage artifactsPath: '/', manifestPath: 'deployit-manifest.xml', darPath: '$JOB_NAME-$BUILD_NUMBER.0.dar' 
+		xldCreatePackage artifactsPath: '/', manifestPath: 'deployit-manifest.xml', darPath: '$JOB_NAME-$BUILD_NUMBER.0.dar'
+			
   	}  
-	
+	 
 	stage('Publish') {  
 	//	xldPublishPackage serverCredentials: 'Admin', darPath: '$JOB_NAME-$BUILD_NUMBER.0.dar'
         xldPublishPackage darPath: '$JOB_NAME-$BUILD_NUMBER.0.dar', serverCredentials: 'XL-DeployServer'
