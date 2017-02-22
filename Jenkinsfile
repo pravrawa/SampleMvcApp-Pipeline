@@ -105,10 +105,10 @@ node
 
     //        mail body: "It appears that ${env.BUILD_URL} is failing" ,
     //        from: 'enterprise_jenkins_valicpso@ci.org',
-    //        replyTo: 'girdhar.katiyar@aig.com',
+    //        replyTo: 'abc@xyz.com',
     //        subject: '${env.JOB_NAME} (${env.BUILD_NUMBER}) failed',
-    //        to: 'Rishi.Singh1@aig.com',
-	//		cc: 'girdhar.katiyar@aig.com,praveen.rawat@aig.com'
+    //        to: 'abc@xyz.com',
+	//		cc: 'abc@xyz.com'
 
         throw err
     }
