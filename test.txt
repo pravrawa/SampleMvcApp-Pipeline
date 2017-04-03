@@ -1,2 +1,3 @@
 Hello it's a test file !
 Hi, Today is 03 Apr, 2017.
+Hello, this is a test commit to check hooks.
