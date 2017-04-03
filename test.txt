@@ -1,1 +1,8 @@
 Hello it's a test file !
+Hi, Today is 03 Apr, 2017.
+Hello, this is a test commit to check hooks!!!!!!!!
+Hello, test line added.
+added
+6 added
+added 7
+added 8
