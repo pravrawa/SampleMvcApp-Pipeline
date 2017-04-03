@@ -1,2 +1,2 @@
-# valic-pso
-This repo is to develop the base DevOps platform for Valic Digitial Program
+# SampleMvcApp-Pipeline
+This repo is to develop the base DevOps platform for SampleMvcApp-Pipeline
