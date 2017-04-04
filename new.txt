@@ -1,4 +1,5 @@
 Hello
+conflicts
 it's new file.
 line no. 3
 line no. 4
